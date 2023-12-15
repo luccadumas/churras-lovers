@@ -1,5 +1,7 @@
 import Head from 'next/head'
 
+import TrincaLogo from '../../assets/images/trinca-logo.svg'
+
 const Home: React.FC = () => {
   return (
     <>
@@ -12,6 +14,7 @@ const Home: React.FC = () => {
       <main>
         <div>
           <h1>Welcome to Next.js!</h1>
+          <TrincaLogo />
         </div>
       </main>
     </>
