@@ -9,7 +9,8 @@ export default createGlobalStyle`
 
   body {
     background: ${props => props.theme.colors.background};
+    background-size: cover;
     color: ${props => props.theme.colors.text};
-    font-family: Arial, Helvetica, sans-serif
+    font-family: Raleway, sans-serif;
   }
 `;

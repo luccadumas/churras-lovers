@@ -1,6 +1,6 @@
-import Head from 'next/head'
-
-import TrincaLogo from '../../assets/images/trinca-logo.svg'
+// pages/index.tsx
+import Head from 'next/head';
+import Login from './Login';
 
 const Home: React.FC = () => {
   return (
@@ -12,13 +12,10 @@ const Home: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div>
-          <h1>Welcome to Next.js!</h1>
-          <TrincaLogo />
-        </div>
+        <Login />
       </main>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
