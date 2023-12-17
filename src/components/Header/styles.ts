@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-  padding-top: 30px;
+  padding-top: 70px;
   padding-bottom: 90px;
    background-image: url('../assets/images/background.jpg');
   background-size: cover;

@@ -4,14 +4,14 @@ import Head from 'next/head';
 import * as S from './styles';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import EventCard from '@/components/EventCard';
-import AddEventButton from '@/components/AddEventButton';
+import EventCard from '@/components/Events/EventCard';
+import AddEventButton from '@/components/Events/AddEventButton';
 
 const Events: React.FC = () => {
   const eventsData = [
     {
       date: '2023-12-22',
-      eventName: 'Churrasco de Natal',
+      eventName: 'Churrasco de Natal com a Família e Amigos',
       participants: 20,
       amountRaised: 500.0,
     },
@@ -56,7 +56,7 @@ const Events: React.FC = () => {
       <S.Event>
         <S.EventsContent>
           {eventsData.map((event, index) => (
-            <EventCard key={index} {...event} />
+            <EventCard key={index} {...event} onCLick={() => { console.log("Details Page") }} />
           ))}
           <AddEventButton onClick={handleAddEvent} />
         </S.EventsContent>

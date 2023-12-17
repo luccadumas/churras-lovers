@@ -1,6 +1,7 @@
 // components/AddEventButton.tsx
 import React from 'react';
-import * as S from './styles'; // Atualize o caminho conforme necessário
+import * as S from './styles';
+import IconBbq from '../../../assets/icons/icon-bbq.svg';
 
 interface AddEventButtonProps {
   onClick: () => void;
@@ -9,7 +10,12 @@ interface AddEventButtonProps {
 const AddEventButton: React.FC<AddEventButtonProps> = ({ onClick }) => {
   return (
     <S.StyledButton onClick={onClick}>
-      Adicionar Churras
+      <S.ButtonContent>
+        <S.ImageContainer>
+          <IconBbq />
+        </S.ImageContainer>
+        <S.ButtonName>Adicionar Churras</S.ButtonName>
+      </S.ButtonContent>
     </S.StyledButton>
   );
 };
