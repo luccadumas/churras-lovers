@@ -1,8 +1,7 @@
 // styles.ts
-import Link from 'next/link';
 import styled from 'styled-components';
 
-export const LoginContainer = styled.div`
+export const RegisterContainer = styled.div`
   background-image: url('../assets/images/background.jpg');
   background-size: cover;
   background-position: center;
@@ -36,7 +35,6 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  text-transform: lowercase;
   padding: 8px;
   margin-bottom: 16px;
 `;
@@ -54,14 +52,4 @@ export const Submit = styled.button`
   border-radius: 18px;
   cursor: pointer;
   margin-top: 40px;
-`;
-
-export const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: #FFFFFF;
-  font-weight: 700;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 20px;
-  display: block;
 `;

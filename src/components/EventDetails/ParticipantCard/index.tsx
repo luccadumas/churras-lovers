@@ -13,7 +13,10 @@ const ParticipantCard: React.FC<ParticipantCardProps> = ({ name, amountDonated }
       <S.CircleIcon />
       <S.ParticipantInfo>
         <S.ParticipantName>{name}</S.ParticipantName>
-        <S.AmountDonated>R$ {amountDonated}</S.AmountDonated>
+        <S.AmountDonatedContainer>
+          <S.AmountDonated>R$ {amountDonated}</S.AmountDonated>
+          <S.AmountDonatedReceived>R$ {amountDonated}</S.AmountDonatedReceived>
+        </S.AmountDonatedContainer>
       </S.ParticipantInfo>
     </S.ParticipantCard>
   );

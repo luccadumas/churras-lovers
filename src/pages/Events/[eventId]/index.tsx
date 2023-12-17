@@ -6,8 +6,13 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import ParticipantCard from '@/components/EventDetails/ParticipantCard';
 import EventHeader from '@/components/EventDetails/EventHeader';
+import { useRouter } from 'next/router';
 
 const EventDetails: React.FC = () => {
+
+  const router = useRouter();
+  const { eventId } = router.query;
+
   // Exemplo de dados para o cabeçalho
   const eventData = {
     date: '2023-12-25',
