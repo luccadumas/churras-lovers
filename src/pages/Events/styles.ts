@@ -63,3 +63,18 @@ export const EventCardDetails = styled.div`
     margin-right: 10px;
   }
 `;
+
+export const NoEvents = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  text-align: center;
+`;
+
+export const NoEventsText = styled.div`
+  font-size: 14px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  text-align: center;
+`;

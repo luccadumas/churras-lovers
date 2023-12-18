@@ -1,50 +1,60 @@
 // pages/events.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import * as S from './styles';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import EventCard from '@/components/Events/EventCard';
 import AddEventButton from '@/components/Events/AddEventButton';
+import api from '@/services/api';
+
+
+interface ParticipantProps {
+  data: {
+    attributes: {
+      createdAt: string;
+      name: string;
+      paidAmount: number;
+      valueWithDrink: number;
+      valueWithoutDrink: number;
+    };
+  }[];
+}
+
+interface EventProps {
+  id: string;
+  attributes: {
+    createdAt: string;
+    date: string;
+    name: string;
+    observation: string;
+    updatedAt: string;
+    participants: ParticipantProps;
+  };
+}
 
 const Events: React.FC = () => {
-  const eventsData = [
-    {
-      date: '2023-12-22',
-      eventName: 'Churrasco de Natal com a Família e Amigos',
-      participants: 20,
-      amountRaised: 500.0,
-    },
-    {
-      date: '2023-12-25',
-      eventName: 'Churrasco de Natal',
-      participants: 20,
-      amountRaised: 500.0,
-    },
-    {
-      date: '2023-12-25',
-      eventName: 'Churrasco de Natal',
-      participants: 20,
-      amountRaised: 500.0,
-    },
-    {
-      date: '2023-12-25',
-      eventName: 'Churrasco de Natal',
-      participants: 20,
-      amountRaised: 500.0,
-    },
-    {
-      date: '2023-12-31',
-      eventName: 'Réveillon com os Amigos',
-      participants: 15,
-      amountRaised: 700.0,
-    },
-  ];
+
+  const [events, setEvents] = useState([]);
+
+  const getEvents = () => {
+    api.get('/events?populate=participants').then((response) => {
+      setEvents(response.data.data);
+      console.log(response.data.data);
+    }).catch((err) => {
+      console.error(err);
+    })
+  }
 
   const handleAddEvent = () => {
     // Lógica para adicionar um novo churrasco
     console.log('Adicionar Churras clicked');
   };
+
+  useEffect(() => {
+    getEvents();
+  }
+    , []);
 
   return (
     <S.EventsContainer>
@@ -55,12 +65,19 @@ const Events: React.FC = () => {
       <Header />
       <S.Event>
         <S.EventsContent>
-          {eventsData.map((event, index) => (
-            <EventCard key={index} {...event} onCLick={() => { console.log("Details Page") }} />
+          {events.length > 0 && events.map((event: EventProps, index: number) => (
+            <EventCard key={index} id={event.id} date={event.attributes.date} name={event.attributes.name} participants={event.attributes.participants} />
           ))}
           <AddEventButton onClick={handleAddEvent} />
         </S.EventsContent>
       </S.Event>
+      {events.length === 0 && (
+        <S.NoEvents>
+          <S.NoEventsText>
+            Você ainda não tem nenhum evento cadastrado.
+          </S.NoEventsText>
+        </S.NoEvents>
+      )}
       <Footer />
     </S.EventsContainer>
   );

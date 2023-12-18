@@ -1,9 +1,9 @@
 // components/AuthChecker.tsx
 import React, { useEffect } from 'react';
 import { useAuth } from '@/contexts/auth';
-import Router from 'next/router';
+import * as S from './styles';
 
-const AuthChecker: React.FC = ({ children }) => {
+const AuthChecker: React.FC = ({ children }: any) => {
   const { verifyUserLoggedIn, loading } = useAuth();
 
   useEffect(() => {
@@ -15,8 +15,11 @@ const AuthChecker: React.FC = ({ children }) => {
   }, []);
 
   if (loading) {
-    // Você pode mostrar um componente de carregamento enquanto verifica a autenticação
-    return <div>Loading...</div>;
+    return (
+      <S.LoadingContainer>
+        <S.Spinner />
+      </S.LoadingContainer>
+    );
   }
 
   return <>{children}</>;

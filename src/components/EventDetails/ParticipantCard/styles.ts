@@ -11,6 +11,15 @@ export const ParticipantCard = styled.div`
   border-bottom: 1px solid ${props => props.theme.colors.primary};
 `;
 
+export const CheckIcon = styled.div`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid #998220;
+  margin-right: 16px;
+  cursor: pointer;
+`;
+
 export const CircleIcon = styled.div`
   width: 30px;
   height: 30px;
@@ -39,12 +48,12 @@ export const AmountDonatedContainer = styled.div`
   align-items: flex-end;
 `;
 
-export const AmountDonated = styled.div`
+export const AmountDonated = styled.p`
   font-size: 21px;
   font-weight: 700;
 `;
 
-export const AmountDonatedReceived = styled.div`
+export const AmountDonatedReceived = styled.p`
   font-size: 16px;
   font-weight: 700;
   color: ${props => props.theme.colors.primary};

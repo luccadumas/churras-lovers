@@ -39,6 +39,14 @@ export const Input = styled.input`
   text-transform: lowercase;
   padding: 8px;
   margin-bottom: 16px;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  border-radius: 2px;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.06);
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
 `;
 
 export const Submit = styled.button`

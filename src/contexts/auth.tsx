@@ -27,11 +27,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   useEffect(() => {
     async function loadUserFromCookies() {
       const user = Cookies.get('user');
-      const jwt = user?.jwt;
-      if (jwt) {
-        console.log("Got a jwt in the cookies, let's see if it is valid");
-        api.defaults.headers.Authorization = `Bearer ${jwt}`;
-        const { data: user } = await api.get('users/me', { headers: { Authorization: `Bearer ${jwt}` } });
+      const token = user?.jwt;
+      if (token) {
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+        const { data: user } = await api.get('users/me', { headers: { Authorization: `Bearer ${token}` } });
         if (user) setUser(user);
       }
       setLoading(false);
@@ -41,21 +40,23 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, []);
 
   const login = async (identifier: string, password: string) => {
+    setLoading(true);
     try {
       const { data: responseData } = await api.post('auth/local', { identifier, password });
 
       if (responseData && responseData.jwt && responseData.user) {
-        console.log("Got token");
         Cookies.set('user', JSON.stringify(responseData.user), { expires: 60 });
+        Cookies.set('token', responseData.jwt, { expires: 60 });
         api.defaults.headers.Authorization = `Bearer ${responseData.jwt}`;
         setUser(responseData.user);
-        console.log("Got user", responseData.user);
       }
 
       return responseData;
     } catch (error) {
       console.error('Error during login:', error);
-      throw error; // Rejeita o erro para tratamento no componente de login
+      throw error;
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -71,15 +72,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const verifyUserLoggedIn = async () => {
     const responseData = Cookies.get('user');
-    console.log(responseData, "AQUI 21231213123")
-    if (responseData) {
-      console.log(user, "Got a user in the cookies, let's see if it is valid");
-      api.defaults.headers.Authorization = `Bearer ${responseData.jwt}`;
-      if (user) {
-        setUser(user)
-        Router.push('/events');
-      }
+    if (!responseData) {
+      Router.push('/login');
+      return;
+    }
+    const responseDataJson = JSON.parse(responseData as string)
+    if (responseDataJson) {
+      setUser(responseDataJson);
+      api.defaults.headers.Authorization = `Bearer ${responseDataJson.jwt}`;
+      Router.push('/events');
     } else {
+      setUser(null);
       Router.push('/login');
     }
     setLoading(false);
