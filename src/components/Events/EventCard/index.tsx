@@ -21,7 +21,7 @@ interface ParticipantProps {
 }
 
 interface EventCardProps {
-  id: string;
+  id: number;
   date: string;
   name: string;
   participants: ParticipantProps;

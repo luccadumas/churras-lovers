@@ -5,24 +5,21 @@ import { handleParsedDate } from '@/utils/parsedDate';
 import { format } from 'date-fns';
 import IconPeople from '../../..//assets/icons/icon-people.svg';
 import IconMoney from '../../../assets/icons/icon-money.svg';
-import AddParticipantModal from '../AddParticipantModal';
+import AddParticipantModal from '../detailsParticipantModal';
 import Router from 'next/router';
+import { formatterAmount } from '@/utils/formatterAmount';
 
 interface EventHeaderProps {
+  updateData: () => void;
   date: string;
   name: string;
   participantsCount: number;
   totalAmount: number;
 };
 
-const EventHeader: React.FC<EventHeaderProps> = ({ date, name, participantsCount, totalAmount }) => {
+const EventHeader: React.FC<EventHeaderProps> = ({ updateData, date, name, participantsCount, totalAmount }) => {
 
   const [isAddParticipantModalOpen, setAddParticipantModalOpen] = useState(false);
-
-  const handleAddParticipant = (participantName: string) => {
-    // Lógica para adicionar participante usando a API ou estado local
-    console.log('Adicionando participante:', participantName);
-  };
 
   return (
     <>
@@ -37,7 +34,7 @@ const EventHeader: React.FC<EventHeaderProps> = ({ date, name, participantsCount
             <IconPeople /> {participantsCount}
           </S.ParticipantsCount>
           <S.TotalAmount>
-            <IconMoney /> R$ {totalAmount.toFixed(2)}
+            <IconMoney /> R$ {formatterAmount(totalAmount)}
           </S.TotalAmount>
         </S.EventStats>
       </S.EventHeaderContainer>
@@ -47,8 +44,9 @@ const EventHeader: React.FC<EventHeaderProps> = ({ date, name, participantsCount
 
       <AddParticipantModal
         isOpen={isAddParticipantModalOpen}
+        isEdit={false}
         onRequestClose={() => setAddParticipantModalOpen(false)}
-        onAddParticipant={handleAddParticipant}
+        updateData={updateData}
       />
     </>
   );

@@ -15,8 +15,25 @@ export const StyledModal = styled(Modal)`
   text-align: center;
 `;
 
+export const ModalHeader = styled.div`
+  // Estilos para o cabeçalho do modal
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const DeleteButton = styled.button`
+  // Estilos para o botão de deletar
+  background-color: #f44336;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
 export const ModalTitle = styled.h2`
-  // Estilos para o título do modal
 `;
 
 export const FormGroup = styled.div`

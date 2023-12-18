@@ -22,7 +22,7 @@ interface ParticipantProps {
 }
 
 interface EventProps {
-  id: string;
+  id: number;
   attributes: {
     createdAt: string;
     date: string;
@@ -47,8 +47,7 @@ const Events: React.FC = () => {
   }
 
   const handleAddEvent = () => {
-    // Lógica para adicionar um novo churrasco
-    console.log('Adicionar Churras clicked');
+
   };
 
   useEffect(() => {

@@ -13,7 +13,7 @@ export const ParticipantCard = styled.div`
 
 export const CheckIcon = styled.div`
   width: 30px;
-  height: 30px;
+  height: 28px;
   border-radius: 50%;
   border: 3px solid #998220;
   margin-right: 16px;
@@ -22,10 +22,11 @@ export const CheckIcon = styled.div`
 
 export const CircleIcon = styled.div`
   width: 30px;
-  height: 30px;
+  height: 28px;
   border-radius: 50%;
   background-color: ${props => props.theme.colors.primary};
   margin-right: 16px;
+  cursor: pointer;
 `;
 
 export const ParticipantInfo = styled.div`

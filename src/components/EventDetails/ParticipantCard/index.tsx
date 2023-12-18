@@ -1,15 +1,30 @@
 import React, { useState } from 'react';
 import * as S from './styles';
-import AddParticipantModal from '../AddParticipantModal';
+import AddParticipantModal from '../detailsParticipantModal';
+import api from '@/services/api';
+import { customToast } from '@/utils/customToast';
+
+interface ParticipantProps {
+  id: number;
+  attributes: {
+    createdAt: string;
+    name: string;
+    paidAmount: number;
+    valueWithDrink: number;
+    valueWithoutDrink: number;
+  };
+}
 
 interface ParticipantCardProps {
+  idParticipant: number;
   name: string;
   amountDonated: number;
   valueWithDrink: number;
   valueWithoutDrink: number;
+  updateData: () => void;
 }
 
-const ParticipantCard: React.FC<ParticipantCardProps> = ({ name, amountDonated, valueWithDrink, valueWithoutDrink }) => {
+const ParticipantCard: React.FC<ParticipantCardProps> = ({ idParticipant, name, amountDonated, valueWithDrink, valueWithoutDrink, updateData, }) => {
   const isAmountWithDrinkReceived = amountDonated >= valueWithDrink;
   const isAmountWithoutDrinkReceived = amountDonated >= valueWithoutDrink;
 
@@ -23,16 +38,14 @@ const ParticipantCard: React.FC<ParticipantCardProps> = ({ name, amountDonated, 
 
   const [isAddParticipantModalOpen, setAddParticipantModalOpen] = useState(false);
 
-  const handleAddParticipant = (participantName: string) => {
-    // Lógica para adicionar participante usando a API ou estado local
-    console.log('Adicionando participante:', participantName);
-  };
-
+  const handleRequestClose = () => {
+    setAddParticipantModalOpen(false);
+  }
 
   return (
     <>
       <S.ParticipantCard>
-        {isAmountWithDrinkReceived || isAmountWithoutDrinkReceived ? <S.CircleIcon /> : <S.CheckIcon onClick={() => { setAddParticipantModalOpen(true) }} />}
+        {isAmountWithDrinkReceived || isAmountWithoutDrinkReceived ? <S.CircleIcon onClick={() => { setAddParticipantModalOpen(true) }} /> : <S.CheckIcon onClick={() => { setAddParticipantModalOpen(true) }} />}
         <S.ParticipantInfo>
           <S.ParticipantName>{name}</S.ParticipantName>
           <S.AmountDonatedContainer>
@@ -46,9 +59,11 @@ const ParticipantCard: React.FC<ParticipantCardProps> = ({ name, amountDonated, 
       {isAddParticipantModalOpen && (
         <AddParticipantModal
           isOpen={isAddParticipantModalOpen}
-          onRequestClose={() => setAddParticipantModalOpen(false)}
-          onAddParticipant={handleAddParticipant}
+          isEdit={true}
+          onRequestClose={() => handleRequestClose()}
+          updateData={updateData}
           data={{
+            id: idParticipant,
             name,
             valueWithDrink,
             valueWithoutDrink,

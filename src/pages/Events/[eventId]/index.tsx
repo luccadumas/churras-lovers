@@ -11,6 +11,7 @@ import api from '@/services/api';
 import { customToast } from '@/utils/customToast';
 
 interface ParticipantProps {
+  id: number;
   attributes: {
     createdAt: string;
     name: string;
@@ -21,7 +22,7 @@ interface ParticipantProps {
 }
 
 interface EventProps {
-  id: string;
+  id: number;
   attributes: {
     createdAt: string;
     date: string;
@@ -43,6 +44,8 @@ const EventDetails: React.FC = () => {
   const [event, setEvent] = useState({} as EventProps);
   const [participants, setParticipants] = useState([] as ParticipantProps[]);
 
+  console.log(participants, "AQUIIII")
+
   const getEvent = () => {
     api.get(`/events/${eventId}?populate=participants`).then((response) => {
       setEvent(response.data.data);
@@ -54,8 +57,42 @@ const EventDetails: React.FC = () => {
     })
   }
 
+  const updateParticipants = (idParticipant: number) => {
+    alert(idParticipant)
+    console.log(idParticipant, "AQUIIII idParticipantidParticipant")
+    const oldParticipants = participants;
+
+    api.put(`/events/${eventId}`, {
+      data: {
+        participants: [
+          ...oldParticipants,
+          idParticipant
+        ]
+      }
+    })
+      .then(response => {
+        console.log(response.data);
+        customToast('Evento editado com sucesso!', 'success');
+      })
+      .catch(error => {
+        console.log(error);
+        customToast('Erro ao editar evento!', 'error');
+      });
+  }
+
+  const handleTotalAmount = () => {
+    let total = 0;
+    participants.forEach(participant => {
+      total += participant.attributes.paidAmount;
+    });
+
+    console.log(total, "AQUII TOTAL")
+    return total;
+  }
+
   useEffect(() => {
     getEvent();
+    handleTotalAmount();
   }, [eventId]);
 
   return (
@@ -65,9 +102,17 @@ const EventDetails: React.FC = () => {
       </Head>
       <Header />
       <S.EventDetailsContent>
-        <EventHeader date={event.attributes?.date} name={event.attributes?.name} participantsCount={event.attributes?.participants.data.length} totalAmount={parseInt(totalAmount as string)} />
+        <EventHeader updateData={getEvent} date={event.attributes?.date} name={event.attributes?.name} participantsCount={event.attributes?.participants.data.length} totalAmount={handleTotalAmount()} />
         {participants.map((participant: ParticipantProps, index: number) => (
-          <ParticipantCard key={index} name={participant.attributes.name} amountDonated={participant.attributes.paidAmount} valueWithDrink={participant.attributes.valueWithDrink} valueWithoutDrink={participant.attributes.valueWithoutDrink} />
+          <ParticipantCard
+            key={index}
+            idParticipant={participant.id}
+            name={participant.attributes.name}
+            amountDonated={participant.attributes.paidAmount}
+            valueWithDrink={participant.attributes.valueWithDrink}
+            valueWithoutDrink={participant.attributes.valueWithoutDrink}
+            updateData={getEvent}
+          />
         ))}
       </S.EventDetailsContent>
       <Footer />
