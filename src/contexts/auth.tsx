@@ -8,10 +8,14 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
+interface LoginResponse {
+  jwt: string;
+}
+
 interface AuthContextData {
   isAuthenticated: boolean;
   user: any;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<LoginResponse>;
   loading: boolean;
   verifyUserLoggedIn: () => void;
   logout: () => void;

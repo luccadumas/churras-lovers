@@ -64,7 +64,7 @@ export const Submit = styled.button`
 `;
 
 export const StyledLink = styled(Link)`
-  text-decoration: none;
+  text-decoration: underline;
   color: ${props => props.theme.colors.white};
   font-weight: 700;
   font-size: 14px;

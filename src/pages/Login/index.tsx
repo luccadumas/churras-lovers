@@ -7,6 +7,10 @@ import { useRouter } from 'next/router';
 import { useAuth } from '@/contexts/auth';
 import { customToast } from '@/utils/customToast';
 
+interface LoginProps {
+  jwt: string;
+}
+
 const Login: React.FC = () => {
   const router = useRouter();
   const { login, verifyUserLoggedIn, loading } = useAuth();
@@ -18,7 +22,7 @@ const Login: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await login(email, password);
+      const response: LoginProps = await login(email, password);
       if (response.jwt) {
         router.push('/events');
       }
@@ -28,7 +32,7 @@ const Login: React.FC = () => {
   };
 
   useEffect(() => {
-    const response = verifyUserLoggedIn();
+    verifyUserLoggedIn();
   }, []);
 
   return (
