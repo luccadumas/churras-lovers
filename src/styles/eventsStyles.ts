@@ -17,6 +17,10 @@ export const Event = styled.div`
   justify-content: center;
   margin-top: -80px;
   background: transparent;
+
+  @media (max-width: 768px) {
+    max-width: 90%;
+  }
 `;
 
 export const EventsContent = styled.div`
