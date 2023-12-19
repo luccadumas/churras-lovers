@@ -34,7 +34,6 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
   </ol>
@@ -96,7 +95,6 @@ This is an example of how to list things you need to use the software and how to
    npm install
    ```
   ou
-  
    ```sh
    yarn install
    ```
