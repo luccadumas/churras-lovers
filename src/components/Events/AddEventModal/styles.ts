@@ -53,6 +53,12 @@ export const Input = styled.input`
   box-sizing: border-box;
 `;
 
+export const TextArea = styled.textarea`
+  width: 100%;
+  height: 100px;
+  padding: 8px;
+`;
+
 export const AddButton = styled.button`
   margin-top: 10px;
   background-color: ${props => props.theme.colors.primary};

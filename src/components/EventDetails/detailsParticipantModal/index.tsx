@@ -1,4 +1,3 @@
-// components/AddParticipantModal/AddParticipantModal.tsx
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import * as S from './styles';
@@ -12,10 +11,9 @@ interface ParticipantData {
   valueWithDrink: number;
   valueWithoutDrink: number;
   amountReceived: number;
-  // participants?: ParticipantProps[];
 }
 
-interface AddParticipantModalProps {
+interface DetailsParticipantModalProps {
   isOpen: boolean;
   isEdit?: boolean;
   onRequestClose: () => void;
@@ -24,7 +22,7 @@ interface AddParticipantModalProps {
 }
 
 
-const AddParticipantModal: React.FC<AddParticipantModalProps> = ({ isOpen, isEdit, onRequestClose, updateData, data }) => {
+const DetailsParticipantModal: React.FC<DetailsParticipantModalProps> = ({ isOpen, isEdit, onRequestClose, updateData, data }) => {
 
   const router = useRouter();
   const { eventId, } = router.query;
@@ -49,12 +47,18 @@ const AddParticipantModal: React.FC<AddParticipantModalProps> = ({ isOpen, isEdi
       }
     })
       .then(response => {
-        onRequestClose();
+        setParticipantData({
+          id: 0,
+          name: '',
+          valueWithDrink: 0,
+          valueWithoutDrink: 0,
+          amountReceived: 0,
+        });
         updateData();
         customToast('Participante adicionado com sucesso!', 'success');
+        onRequestClose();
       })
       .catch(error => {
-        console.error(error, "ERROR RESPONSE RESPONSE");
         customToast('Erro ao adicionar participante!', 'error');
       });
   };
@@ -69,13 +73,18 @@ const AddParticipantModal: React.FC<AddParticipantModalProps> = ({ isOpen, isEdi
       }
     })
       .then(response => {
-        console.log(response.data);
-        onRequestClose();
-
+        setParticipantData({
+          id: 0,
+          name: '',
+          valueWithDrink: 0,
+          valueWithoutDrink: 0,
+          amountReceived: 0,
+        });
+        updateData();
         customToast('Participante editado com sucesso!', 'success');
+        onRequestClose();
       })
       .catch(error => {
-        console.log(error);
         customToast('Erro ao editar participante!', 'error');
       });
   };
@@ -83,13 +92,11 @@ const AddParticipantModal: React.FC<AddParticipantModalProps> = ({ isOpen, isEdi
   const deleteParticipant = (participantId: number) => {
     api.delete(`/participants/${participantId}`)
       .then(response => {
-        console.log(response.data);
         updateData();
-        onRequestClose();
         customToast('Participante deletado com sucesso!', 'success');
+        onRequestClose();
       })
       .catch(error => {
-        console.log(error);
         customToast('Erro ao deletar participante!', 'error');
       });
   }
@@ -143,7 +150,7 @@ const AddParticipantModal: React.FC<AddParticipantModalProps> = ({ isOpen, isEdi
           />
         </S.InputLabel>
         <S.InputLabel>
-          Valor recebido:
+          Valor pago:
           <S.Input
             type="number"
             value={participantData.amountReceived}
@@ -151,10 +158,10 @@ const AddParticipantModal: React.FC<AddParticipantModalProps> = ({ isOpen, isEdi
           />
         </S.InputLabel>
       </S.FormGroup>
-      <S.AddButton onClick={handleAddEditParticipant}>{isEdit ? "Editar" : "Adicionar"}</S.AddButton>
       <S.CloseButton onClick={onRequestClose}>Fechar</S.CloseButton>
+      <S.AddButton onClick={handleAddEditParticipant}>{isEdit ? "Editar" : "Adicionar"}</S.AddButton>
     </S.StyledModal>
   );
 };
 
-export default AddParticipantModal;
+export default DetailsParticipantModal;

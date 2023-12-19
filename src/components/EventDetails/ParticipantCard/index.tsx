@@ -51,7 +51,7 @@ const ParticipantCard: React.FC<ParticipantCardProps> = ({ idParticipant, name, 
           <S.AmountDonatedContainer>
             <S.AmountDonated style={amountWithDrinkStyle}>Com bebida: R$ {valueWithDrink}</S.AmountDonated>
             <S.AmountDonated style={amountWithoutDrinkStyle}>Sem bebida: R$ {valueWithoutDrink}</S.AmountDonated>
-            <S.AmountDonatedReceived>Recebido: R$ {amountDonated}</S.AmountDonatedReceived>
+            <S.AmountDonatedReceived>Pago: R$ {amountDonated}</S.AmountDonatedReceived>
           </S.AmountDonatedContainer>
         </S.ParticipantInfo>
       </S.ParticipantCard>

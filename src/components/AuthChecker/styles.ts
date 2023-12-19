@@ -16,8 +16,8 @@ export const LoadingContainer = styled.div`
 `;
 
 export const Spinner = styled.div`
-  border: 4px solid #FFFFFF;
-  border-top: 4px solid transparent; /* Adiciona um triângulo transparente na parte superior para criar um spinner */
+  border: 4px solid ${props => props.theme.colors.white};
+  border-top: 4px solid transparent;
   border-radius: 50%;
   width: 40px;
   height: 40px;

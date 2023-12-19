@@ -1,4 +1,3 @@
-// styles.ts
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -54,9 +53,9 @@ export const Submit = styled.button`
   height: 50px;
   font-size: 18px;
   font-weight: 700;
-  background: #000000;
+  background: ${props => props.theme.colors.black};
   box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.06);
-  color: #FFFFFF;
+  color: ${props => props.theme.colors.white};
   padding: 10px;
   border: none;
   border-radius: 18px;
@@ -66,7 +65,7 @@ export const Submit = styled.button`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #FFFFFF;
+  color: ${props => props.theme.colors.white};
   font-weight: 700;
   font-size: 14px;
   text-align: center;

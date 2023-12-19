@@ -2,7 +2,6 @@ import { createContext, useState, useContext, useEffect, ReactNode } from 'react
 import Cookies from 'js-cookie';
 import Router from 'next/router';
 
-//api aqui é uma instância axios que tem a baseURL configurada de acordo com o env.
 import api from '../services/api';
 
 interface AuthProviderProps {
@@ -11,7 +10,7 @@ interface AuthProviderProps {
 
 interface AuthContextData {
   isAuthenticated: boolean;
-  user: any; // Defina o tipo do usuário conforme necessário
+  user: any;
   login: (email: string, password: string) => Promise<void>;
   loading: boolean;
   verifyUserLoggedIn: () => void;
@@ -26,8 +25,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     async function loadUserFromCookies() {
-      const user = Cookies.get('user');
-      const token = user?.jwt;
+      const token = Cookies.get('token');
       if (token) {
         api.defaults.headers.Authorization = `Bearer ${token}`;
         const { data: user } = await api.get('users/me', { headers: { Authorization: `Bearer ${token}` } });
@@ -53,7 +51,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
       return responseData;
     } catch (error) {
-      console.error('Error during login:', error);
       throw error;
     } finally {
       setLoading(false);
@@ -62,6 +59,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
 
   const logout = () => {
+    Cookies.remove('token');
     Cookies.remove('user');
     setUser(null);
     delete api.defaults.headers.Authorization;

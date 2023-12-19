@@ -1,4 +1,3 @@
-// pages/register.tsx
 import React, { useState } from 'react';
 import Head from 'next/head';
 import * as S from './styles';
@@ -28,7 +27,7 @@ const Register: React.FC = () => {
       return;
     }
 
-    api.post('/api/auth/local/register', {
+    api.post('auth/local/register', {
       email,
       username: email,
       password,
@@ -37,8 +36,8 @@ const Register: React.FC = () => {
       customToast('Usuário registrado com sucesso', "success");
 
     }).catch((err) => {
+      console.log(err)
       customToast('Erro ao registrar o usuário', "error");
-      console.error(err);
     });
   };
 
@@ -70,6 +69,9 @@ const Register: React.FC = () => {
         <S.Submit type='submit'>
           Registrar
         </S.Submit>
+        <S.StyledLink href="/login">
+          Já tenho uma conta
+        </S.StyledLink>
       </S.Form>
       <Footer />
     </S.RegisterContainer>

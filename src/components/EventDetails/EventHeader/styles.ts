@@ -1,4 +1,3 @@
-// components/styles.ts
 import styled from 'styled-components';
 
 export const AddParticipantButton = styled.button`
@@ -37,7 +36,32 @@ export const ButtonBack = styled.button`
   }
 `;
 
+export const DeleteEventButton = styled.button`
+  background-color: transparent;
+  border: none;
+  color: ${props => props.theme.colors.red};
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+
 export const EventHeaderContainer = styled.div`
+  margin-bottom: 43px;
+  display: flex ;
+  justify-content: space-between;
+  flex-direction: row;
+`;
+
+export const EventSubHeaderContainer = styled.div`
   margin-bottom: 43px;
   display: flex ;
   justify-content: space-between;

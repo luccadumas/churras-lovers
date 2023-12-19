@@ -1,4 +1,3 @@
-// components/AddEventButton.tsx
 import React from 'react';
 import * as S from './styles';
 import IconBbq from '../../../assets/icons/icon-bbq.svg';

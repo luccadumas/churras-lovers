@@ -18,7 +18,7 @@ export const Title = styled.h1`
 export const Logout = styled.button`
   background-color: transparent;
   border: none;
-  color: #ffffff;
+  color: ${props => props.theme.colors.white};
   font-size: 20px;
   margin-top: 20px;
   font-weight: bold;

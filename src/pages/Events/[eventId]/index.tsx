@@ -1,4 +1,3 @@
-// pages/EventDetails.tsx
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import * as S from './styles';
@@ -44,40 +43,14 @@ const EventDetails: React.FC = () => {
   const [event, setEvent] = useState({} as EventProps);
   const [participants, setParticipants] = useState([] as ParticipantProps[]);
 
-  console.log(participants, "AQUIIII")
-
   const getEvent = () => {
     api.get(`/events/${eventId}?populate=participants`).then((response) => {
       setEvent(response.data.data);
       setParticipants(response.data.data.attributes.participants.data);
     }
     ).catch((err) => {
-      console.error(err);
       customToast('Erro ao buscar o evento', 'error');
     })
-  }
-
-  const updateParticipants = (idParticipant: number) => {
-    alert(idParticipant)
-    console.log(idParticipant, "AQUIIII idParticipantidParticipant")
-    const oldParticipants = participants;
-
-    api.put(`/events/${eventId}`, {
-      data: {
-        participants: [
-          ...oldParticipants,
-          idParticipant
-        ]
-      }
-    })
-      .then(response => {
-        console.log(response.data);
-        customToast('Evento editado com sucesso!', 'success');
-      })
-      .catch(error => {
-        console.log(error);
-        customToast('Erro ao editar evento!', 'error');
-      });
   }
 
   const handleTotalAmount = () => {
@@ -86,7 +59,6 @@ const EventDetails: React.FC = () => {
       total += participant.attributes.paidAmount;
     });
 
-    console.log(total, "AQUII TOTAL")
     return total;
   }
 

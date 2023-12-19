@@ -1,4 +1,3 @@
-// styles.ts
 import styled from 'styled-components';
 
 export const EventsContainer = styled.div`
@@ -32,9 +31,9 @@ export const EventsContent = styled.div`
 `;
 
 export const EventCard = styled.div`
-  background-color: #FFFFFF;
+  background-color: ${props => props.theme.colors.white};
   width: calc(50% - 10px);
-  border: 1px solid #ccc;
+  border: 1px solid ${props => props.theme.colors.secondary};
   border-radius: 8px;
   margin-bottom: 16px;
   padding: 16px;

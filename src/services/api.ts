@@ -9,10 +9,8 @@ const api = axios.create({
   },
 });
 
-// Adicione um interceptor para modificar os headers antes de cada requisição
 api.interceptors.request.use(
   (config) => {
-    // Verifica se o usuário está logado (tem um token)
     const userToken = Cookies.get('token');
     if (userToken) {
       config.headers.Authorization = `Bearer ${userToken}`;
@@ -20,7 +18,6 @@ api.interceptors.request.use(
     return config;
   },
   (error) => {
-    // Faça algo com o erro da requisição
     return Promise.reject(error);
   }
 );

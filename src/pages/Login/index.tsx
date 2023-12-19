@@ -19,21 +19,16 @@ const Login: React.FC = () => {
 
     try {
       const response = await login(email, password);
-      console.log(response, "AQUI")
       if (response.jwt) {
         router.push('/events');
       }
     } catch (error) {
-      console.error('Error during login:', error);
       customToast('Erro ao fazer login', 'error');
     }
   };
 
   useEffect(() => {
     const response = verifyUserLoggedIn();
-
-    console.log(response, "AQUI Login")
-
   }, []);
 
   return (

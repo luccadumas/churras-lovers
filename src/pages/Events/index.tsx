@@ -1,4 +1,3 @@
-// pages/events.tsx
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import * as S from './styles';
@@ -7,6 +6,8 @@ import Header from '@/components/Header';
 import EventCard from '@/components/Events/EventCard';
 import AddEventButton from '@/components/Events/AddEventButton';
 import api from '@/services/api';
+import AddEventModal from '@/components/Events/AddEventModal';
+import { customToast } from '@/utils/customToast';
 
 
 interface ParticipantProps {
@@ -36,24 +37,23 @@ interface EventProps {
 const Events: React.FC = () => {
 
   const [events, setEvents] = useState([]);
+  const [addEventModalIsOpen, setAddEventModalIsOpen] = useState(false);
 
   const getEvents = () => {
     api.get('/events?populate=participants').then((response) => {
       setEvents(response.data.data);
-      console.log(response.data.data);
     }).catch((err) => {
-      console.error(err);
+      customToast('Erro ao buscar os eventos', 'error');
     })
   }
 
   const handleAddEvent = () => {
-
+    setAddEventModalIsOpen(true);
   };
 
   useEffect(() => {
     getEvents();
-  }
-    , []);
+  }, []);
 
   return (
     <S.EventsContainer>
@@ -78,6 +78,15 @@ const Events: React.FC = () => {
         </S.NoEvents>
       )}
       <Footer />
+      {
+        addEventModalIsOpen && (
+          <AddEventModal
+            isOpen={addEventModalIsOpen}
+            onRequestClose={() => setAddEventModalIsOpen(false)}
+            updateData={getEvents}
+          />
+        )
+      }
     </S.EventsContainer>
   );
 };

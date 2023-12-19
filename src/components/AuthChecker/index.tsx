@@ -1,9 +1,8 @@
-// components/AuthChecker.tsx
-import React, { useEffect } from 'react';
+import React, { useEffect, ReactNode } from 'react';
 import { useAuth } from '@/contexts/auth';
 import * as S from './styles';
 
-const AuthChecker: React.FC = ({ children }: any) => {
+const AuthChecker: React.FC<{ children: ReactNode }> = ({ children }) => {
   const { verifyUserLoggedIn, loading } = useAuth();
 
   useEffect(() => {

@@ -1,10 +1,9 @@
-// components/EventCardStyles.ts
 import styled from 'styled-components';
 
 export const EventCard = styled.div`
   position: relative;
   border-radius: 2px;
-  background: #FFF;
+  background: ${props => props.theme.colors.white};
   box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
   margin-bottom: 16px;
@@ -28,7 +27,7 @@ export const EventCardName = styled.div`
 
 export const EventCardDetails = styled.div`
   position: absolute;
-  bottom: 8px; /* Adiciona um espaçamento inferior */
+  bottom: 8px;
   left: 0;
   right: 0;
   padding-left: 16px;
