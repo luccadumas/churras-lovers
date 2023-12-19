@@ -1,7 +1,4 @@
-// components/styles.ts
 import styled from 'styled-components';
-
-// ... (outros estilos que você já tem)
 
 export const ParticipantCard = styled.div`
   display: flex;
