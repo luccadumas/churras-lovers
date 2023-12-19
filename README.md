@@ -99,9 +99,9 @@ This is an example of how to list things you need to use the software and how to
    yarn install
    ```
 
-4. Create file .env
+4. Create the .env file in the project root
    ```JS
-   const REACT_APP_API_URL = 'http://143.198.151.41/api/';
+   REACT_APP_API_URL = 'http://143.198.151.41/api/';
    ```
 
 <!-- CONTRIBUTING -->
