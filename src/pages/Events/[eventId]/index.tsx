@@ -73,7 +73,7 @@ const EventDetails: React.FC = () => {
       </Head>
       <Header />
       <S.EventDetailsContent>
-        <EventHeader updateData={getEvent} date={event.attributes?.date} name={event.attributes?.name} participantsCount={event.attributes?.participants.data.length} totalAmount={handleTotalAmount()} />
+        <EventHeader updateData={getEvent} date={event.attributes?.date} name={event.attributes?.name} description={event.attributes?.observation} participantsCount={event.attributes?.participants.data.length} totalAmount={handleTotalAmount()} />
         {participants.map((participant: ParticipantProps, index: number) => (
           <ParticipantCard
             key={index}

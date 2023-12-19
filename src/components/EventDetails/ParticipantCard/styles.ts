@@ -38,6 +38,7 @@ export const ParticipantName = styled.div`
   font-weight: 700;
   margin-bottom: 4px;
   align-self: center;
+  margin-right: 12px;
 `;
 
 export const AmountDonatedContainer = styled.div`
@@ -49,10 +50,16 @@ export const AmountDonatedContainer = styled.div`
 export const AmountDonated = styled.p`
   font-size: 21px;
   font-weight: 700;
+
+  @media (max-width: 768px) {
+    text-align: right;
+    white-space: break-spaces;
+    font-size: 20px;
+  }
 `;
 
 export const AmountDonatedReceived = styled.p`
   font-size: 16px;
   font-weight: 700;
-  color: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.primary}
 `;

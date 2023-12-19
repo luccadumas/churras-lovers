@@ -50,7 +50,6 @@ export const FormGroupValues = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     margin-bottom: 20px;
-    gap: 0;
   }
 `;
 

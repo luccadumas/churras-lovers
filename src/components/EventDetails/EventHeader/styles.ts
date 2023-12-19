@@ -87,6 +87,12 @@ export const EventName = styled.div`
   padding-top: 2px;
 `;
 
+export const Description = styled.div`
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 20px;
+`;
+
 export const EventStats = styled.div`
   display: flex;
   flex-direction: column;
