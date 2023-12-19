@@ -101,7 +101,7 @@ This is an example of how to list things you need to use the software and how to
 
 4. Create file .env
    ```JS
-   const REACT_APP_API_URL = 'https://churras-lovers-api-9fe7938219ce.herokuapp.com/';
+   const REACT_APP_API_URL = 'http://143.198.151.41/api/';
    ```
 
 <!-- CONTRIBUTING -->
