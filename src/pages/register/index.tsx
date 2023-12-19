@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import * as S from './styles';
+import {
+  RegisterContainer,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Submit,
+  StyledLink,
+} from '../../styles/registerStyles';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { customToast } from '@/utils/customToast';
@@ -42,39 +50,39 @@ const Register: React.FC = () => {
   };
 
   return (
-    <S.RegisterContainer>
+    <RegisterContainer>
       <Head>
         <title>Agenda de Churras - Register</title>
       </Head>
       <Header />
-      <S.Form onSubmit={handleRegister}>
-        <S.FormGroup>
-          <S.Label>
+      <Form onSubmit={handleRegister}>
+        <FormGroup>
+          <Label>
             Usuário
-          </S.Label>
-          <S.Input required type="email" placeholder='e-mail' value={email} onChange={(e) => setEmail(e.target.value)} />
-        </S.FormGroup>
-        <S.FormGroup>
-          <S.Label>
+          </Label>
+          <Input required type="email" placeholder='e-mail' value={email} onChange={(e) => setEmail(e.target.value)} />
+        </FormGroup>
+        <FormGroup>
+          <Label>
             Senha
-          </S.Label>
-          <S.Input required type="password" placeholder='senha' value={password} onChange={(e) => setPassword(e.target.value)} />
-        </S.FormGroup>
-        <S.FormGroup>
-          <S.Label>
+          </Label>
+          <Input required type="password" placeholder='senha' value={password} onChange={(e) => setPassword(e.target.value)} />
+        </FormGroup>
+        <FormGroup>
+          <Label>
             Confirmação de senha
-          </S.Label>
-          <S.Input required type="password" placeholder='confirmação de senha' value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
-        </S.FormGroup>
-        <S.Submit type='submit'>
+          </Label>
+          <Input required type="password" placeholder='confirmação de senha' value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
+        </FormGroup>
+        <Submit type='submit'>
           Registrar
-        </S.Submit>
-        <S.StyledLink href="/login">
+        </Submit>
+        <StyledLink href="/login">
           Já tenho uma conta
-        </S.StyledLink>
-      </S.Form>
+        </StyledLink>
+      </Form>
       <Footer />
-    </S.RegisterContainer>
+    </RegisterContainer>
   );
 };
 

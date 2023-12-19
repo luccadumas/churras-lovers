@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import * as S from './styles';
+import {
+  EventsContainer,
+  Event,
+  EventsContent,
+  NoEvents,
+  NoEventsText,
+} from '../../styles/eventsStyles';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import EventCard from '@/components/Events/EventCard';
@@ -56,26 +62,26 @@ const Events: React.FC = () => {
   }, []);
 
   return (
-    <S.EventsContainer>
+    <EventsContainer>
       <Head>
         <title>Agenda de Churras - Eventos</title>
       </Head>
 
       <Header />
-      <S.Event>
-        <S.EventsContent>
+      <Event>
+        <EventsContent>
           {events.length > 0 && events.map((event: EventProps, index: number) => (
             <EventCard key={index} id={event.id} date={event.attributes.date} name={event.attributes.name} participants={event.attributes.participants} />
           ))}
           <AddEventButton onClick={handleAddEvent} />
-        </S.EventsContent>
-      </S.Event>
+        </EventsContent>
+      </Event>
       {events.length === 0 && (
-        <S.NoEvents>
-          <S.NoEventsText>
+        <NoEvents>
+          <NoEventsText>
             Você ainda não tem nenhum evento cadastrado.
-          </S.NoEventsText>
-        </S.NoEvents>
+          </NoEventsText>
+        </NoEvents>
       )}
       <Footer />
       {
@@ -87,7 +93,7 @@ const Events: React.FC = () => {
           />
         )
       }
-    </S.EventsContainer>
+    </EventsContainer>
   );
 };
 

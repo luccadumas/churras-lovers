@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import * as S from './styles';
+import {
+  LoginContainer,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Submit,
+  StyledLink,
+} from '../../styles/loginStyles';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { useRouter } from 'next/router';
@@ -36,33 +44,33 @@ const Login: React.FC = () => {
   }, []);
 
   return (
-    <S.LoginContainer>
+    <LoginContainer>
       <Head>
         <title>Agenda de Churras - Login</title>
       </Head>
       <Header />
-      <S.Form onSubmit={handleLogin}>
-        <S.FormGroup>
-          <S.Label>
+      <Form onSubmit={handleLogin}>
+        <FormGroup>
+          <Label>
             Login
-          </S.Label>
-          <S.Input type="email" placeholder='e-mail' value={email} required onChange={(e) => setEmail(e.target.value)} />
-        </S.FormGroup>
-        <S.FormGroup>
-          <S.Label>
+          </Label>
+          <Input type="email" placeholder='e-mail' value={email} required onChange={(e) => setEmail(e.target.value)} />
+        </FormGroup>
+        <FormGroup>
+          <Label>
             Senha
-          </S.Label>
-          <S.Input type="password" placeholder='senha' value={password} required onChange={(e) => setPassword(e.target.value)} />
-        </S.FormGroup>
-        <S.Submit type='submit' >
+          </Label>
+          <Input type="password" placeholder='senha' value={password} required onChange={(e) => setPassword(e.target.value)} />
+        </FormGroup>
+        <Submit type='submit' >
           {loading ? 'Carregando...' : 'Entrar'}
-        </S.Submit>
-        <S.StyledLink href="/register">
+        </Submit>
+        <StyledLink href="/register">
           Primeiro acesso
-        </S.StyledLink>
-      </S.Form>
+        </StyledLink>
+      </Form>
       <Footer />
-    </S.LoginContainer>
+    </LoginContainer>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import * as S from './styles';
+import * as S from '../../../styles/eventStyles';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import ParticipantCard from '@/components/EventDetails/ParticipantCard';
