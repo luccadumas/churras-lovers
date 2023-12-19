@@ -7,7 +7,7 @@ import IconMoney from '../../../assets/icons/icon-money.svg';
 import AddParticipantModal from '../detailsParticipantModal';
 import Router from 'next/router';
 import { formatterAmount } from '@/utils/formatterAmount';
-import GenericModal from '@/components/Events/genericModal';
+import GenericModal from '@/components/Events/GenericModal';
 import { customToast } from '@/utils/customToast';
 import api from '@/services/api';
 
@@ -15,12 +15,13 @@ interface EventHeaderProps {
   updateData: () => void;
   date: string;
   name: string;
+  description?: string;
   participantsCount: number;
   totalAmount: number;
 };
 
 const EventHeader: React.FC<EventHeaderProps> = (
-  { updateData, date, name, participantsCount, totalAmount }
+  { updateData, date, name, description, participantsCount, totalAmount }
 ) => {
 
   const [isAddParticipantModalOpen, setAddParticipantModalOpen] = useState(false);
@@ -64,6 +65,9 @@ const EventHeader: React.FC<EventHeaderProps> = (
           </S.TotalAmount>
         </S.EventStats>
       </S.EventSubHeaderContainer>
+
+      {description && (<S.Description>{description}</S.Description>)}
+
       <S.AddParticipantButton onClick={() => { setAddParticipantModalOpen(true) }}>
         Adicionar participante
       </S.AddParticipantButton>

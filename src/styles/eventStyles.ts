@@ -15,4 +15,8 @@ box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.06);
   margin-top: -50px;
   background: ${props => props.theme.colors.white};
   padding: 35px;
+
+  @media (max-width: 768px) {
+    max-width: 90%;
+  }
 `;

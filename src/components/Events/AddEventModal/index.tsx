@@ -35,11 +35,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ isOpen, isEdit, onRequest
       return;
     }
     if (event.name === '') {
-      customToast('Nome do evento é obrigatório!', 'error');
-      return;
-    }
-    if (event.description === '') {
-      customToast('Descrição do evento é obrigatória!', 'error');
+      customToast('Descrição do evento é obrigatório!', 'error');
       return;
     }
 
@@ -142,7 +138,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ isOpen, isEdit, onRequest
         />
       </S.FormGroup>
       <S.FormGroup>
-        <S.InputLabel>Nome</S.InputLabel>
+        <S.InputLabel>Descrição</S.InputLabel>
         <S.Input
           type="text"
           value={eventData.name}
@@ -150,7 +146,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ isOpen, isEdit, onRequest
         />
       </S.FormGroup>
       <S.FormGroup>
-        <S.InputLabel>Descrição</S.InputLabel>
+        <S.InputLabel>Informações adicionais</S.InputLabel>
         <S.TextArea
           value={eventData.description}
           onChange={(e) => setEventData({ ...eventData, description: e.target.value })}
