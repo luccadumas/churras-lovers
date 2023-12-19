@@ -48,7 +48,7 @@ const EventDetails: React.FC = () => {
       setParticipants(response.data.data.attributes.participants.data);
     }
     ).catch((err) => {
-      customToast('Erro ao buscar o evento', 'error');
+      // customToast('Erro ao buscar o evento', 'error');
     })
   }
 

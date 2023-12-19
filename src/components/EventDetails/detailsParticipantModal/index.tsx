@@ -124,40 +124,40 @@ const DetailsParticipantModal: React.FC<DetailsParticipantModalProps> = ({ isOpe
         <S.ModalTitle>{isEdit ? "Editar" : "Adicionar"} Participante</S.ModalTitle>
         {isEdit && <S.DeleteButton onClick={() => deleteParticipant(participantData.id)}>Excluir</S.DeleteButton>}
       </S.ModalHeader>
-      <S.InputLabel>
-        Nome do Participante:
+      <S.FormGroup>
+        <S.InputLabel>Nome do participante:</S.InputLabel>
         <S.Input
           type="text"
           value={participantData.name}
           onChange={(e) => setParticipantData({ ...participantData, name: e.target.value })}
         />
-      </S.InputLabel>
-      <S.FormGroup>
-        <S.InputLabel>
-          Valor com bebida:
+      </S.FormGroup>
+      <S.FormGroupValues>
+        <S.FormGroup>
+          <S.InputLabel>Valor com bebida:</S.InputLabel>
           <S.Input
             type="number"
             value={participantData.valueWithDrink}
             onChange={(e) => setParticipantData({ ...participantData, valueWithDrink: +e.target.value })}
           />
-        </S.InputLabel>
-        <S.InputLabel>
-          Valor sem bebida:
+        </S.FormGroup>
+        <S.FormGroup>
+          <S.InputLabel>Valor sem bebida:</S.InputLabel>
           <S.Input
             type="number"
             value={participantData.valueWithoutDrink}
             onChange={(e) => setParticipantData({ ...participantData, valueWithoutDrink: +e.target.value })}
           />
-        </S.InputLabel>
-        <S.InputLabel>
-          Valor pago:
+        </S.FormGroup>
+        <S.FormGroup>
+          <S.InputLabel>Valor pago:</S.InputLabel>
           <S.Input
             type="number"
             value={participantData.amountReceived}
             onChange={(e) => setParticipantData({ ...participantData, amountReceived: +e.target.value })}
           />
-        </S.InputLabel>
-      </S.FormGroup>
+        </S.FormGroup>
+      </S.FormGroupValues>
       <S.CloseButton onClick={onRequestClose}>Fechar</S.CloseButton>
       <S.AddButton onClick={handleAddEditParticipant}>{isEdit ? "Editar" : "Adicionar"}</S.AddButton>
     </S.StyledModal>

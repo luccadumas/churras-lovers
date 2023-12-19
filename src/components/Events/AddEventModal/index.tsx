@@ -114,29 +114,29 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ isOpen, isEdit, onRequest
         <S.ModalTitle>{isEdit ? "Editar" : "Adicionar"} Evento</S.ModalTitle>
         {isEdit && <S.DeleteButton onClick={() => deleteEvent(eventData.id)}>Excluir</S.DeleteButton>}
       </S.ModalHeader>
-      <S.InputLabel>
-        Data do Evento:
+      <S.FormGroup>
+        <S.InputLabel>Data do evento</S.InputLabel>
         <S.Input
           type="date"
           value={eventData.date}
           onChange={(e) => setEventData({ ...eventData, date: e.target.value })}
         />
-      </S.InputLabel>
-      <S.InputLabel>
-        Nome do Evento:
+      </S.FormGroup>
+      <S.FormGroup>
+        <S.InputLabel>Nome do evento</S.InputLabel>
         <S.Input
           type="text"
           value={eventData.name}
           onChange={(e) => setEventData({ ...eventData, name: e.target.value })}
         />
-      </S.InputLabel>
-      <S.InputLabel>
-        Descrição do Evento:
+      </S.FormGroup>
+      <S.FormGroup>
+        <S.InputLabel>Descrição do evento</S.InputLabel>
         <S.TextArea
           value={eventData.description}
           onChange={(e) => setEventData({ ...eventData, description: e.target.value })}
         />
-      </S.InputLabel>
+      </S.FormGroup>
       <S.CloseButton onClick={onRequestClose}>Fechar</S.CloseButton>
       <S.AddButton onClick={handleAddEditEvent}>{isEdit ? "Editar" : "Adicionar"}</S.AddButton>
     </S.StyledModal>

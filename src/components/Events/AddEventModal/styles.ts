@@ -36,8 +36,7 @@ export const ModalTitle = styled.h2`
 export const FormGroup = styled.div`
   margin-bottom: 16px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 10px;
 `;
 
@@ -45,6 +44,8 @@ export const InputLabel = styled.label`
   text-align: left;
   display: block;
   margin-top: 10px;
+  font-weight: bold;
+  padding-bottom: 10px;
 `;
 
 export const Input = styled.input`
