@@ -38,7 +38,6 @@ const EventDetails: React.FC = () => {
 
   const router = useRouter();
   const { eventId, } = router.query;
-  const { totalAmount } = router.query;
 
   const [event, setEvent] = useState({} as EventProps);
   const [participants, setParticipants] = useState([] as ParticipantProps[]);
