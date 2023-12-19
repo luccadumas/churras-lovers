@@ -39,6 +39,12 @@ export const FormGroup = styled.div`
   flex-direction: row;
   justify-content: space-between;
   gap: 10px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-bottom: 20px;
+    gap: 0;
+  }
 `;
 
 export const InputLabel = styled.label`

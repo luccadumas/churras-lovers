@@ -28,6 +28,10 @@ export const EventsContent = styled.div`
   background-color: transparent;
   padding: 20px;
   border-radius: 8px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const EventCard = styled.div`

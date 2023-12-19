@@ -12,9 +12,20 @@ interface LoginResponse {
   jwt: string;
 }
 
+interface UserData {
+  id: number;
+  username: string;
+  email: string;
+  provider: string;
+  confirmed: boolean;
+  blocked: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
 interface AuthContextData {
   isAuthenticated: boolean;
-  user: any;
+  user: UserData | null;
   login: (email: string, password: string) => Promise<LoginResponse>;
   loading: boolean;
   verifyUserLoggedIn: () => void;
