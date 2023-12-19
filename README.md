@@ -1,50 +1,44 @@
 <p align="center">
-  <a href="https://github.com/luccadumas/churras-lovers">
-    <!-- Substitua o link da imagem pelo link do seu logo -->
-    <img src="caminho/do/seu/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
   <h3 align="center">Churras Lovers</h3>
 
   <p align="center">
-    Uma aplicação incrível para amantes de churrasco!
+    An amazing application for barbecue lovers!
     <br />
-    <a href="https://github.com/luccadumas/churras-lovers"><strong>Explore a documentação »</strong></a>
+    <a href="https://github.com/luccadumas/churras-lovers"><strong>Explore the documentation »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/luccadumas/churras-lovers">Ver Demo</a>
+    <a href="https://github.com/luccadumas/churras-lovers">View Demo</a>
     ·
-    <a href="https://github.com/luccadumas/churras-lovers/issues">Reportar Bug</a>
+    <a href="https://github.com/luccadumas/churras-lovers/issues">Report Bug</a>
     ·
-    <a href="https://github.com/luccadumas/churras-lovers/issues">Solicitar Recurso</a>
+    <a href="https://github.com/luccadumas/churras-lovers/issues">Request Feature</a>
   </p>
 </p>
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
-  <summary>Índice</summary>
+  <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#sobre-o-projeto">Sobre o Projeto</a>
+      <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#construído-com">Construído Com</a></li>
+        <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
     <li>
-      <a href="#iniciando">Iniciando</a>
+      <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#pré-requisitos">Pré-requisitos</a></li>
-        <li><a href="#instalação">Instalação</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#uso">Uso</a></li>
-    <li><a href="#roteiro">Roteiro</a></li>
-    <li><a href="#contribuindo">Contribuindo</a></li>
-    <li><a href="#licença">Licença</a></li>
-    <li><a href="#contato">Contato</a></li>
-    <li><a href="#agradecimentos">Agradecimentos</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
   </ol>
-</details>
+</details>>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -102,8 +96,7 @@ This is an example of how to list things you need to use the software and how to
    npm install
    ```
   ou
-
-  Install NPM packages
+  
    ```sh
    yarn install
    ```
