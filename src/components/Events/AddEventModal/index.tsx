@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Modal from 'react-modal';
 import * as S from './styles';
 import api from '@/services/api';
 import { customToast } from '@/utils/customToast';
@@ -22,7 +21,6 @@ interface AddEventModalProps {
 
 const AddEventModal: React.FC<AddEventModalProps> = ({ isOpen, isEdit, onRequestClose, updateData, data }) => {
   const router = useRouter();
-  const { eventId } = router.query;
 
   const [eventData, setEventData] = useState<EventData>({
     id: 0,
@@ -31,7 +29,26 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ isOpen, isEdit, onRequest
     description: '',
   });
 
+  const handleValidateFields = (event: EventData) => {
+    if (event.date === '') {
+      customToast('Data do evento é obrigatória!', 'error');
+      return;
+    }
+    if (event.name === '') {
+      customToast('Nome do evento é obrigatório!', 'error');
+      return;
+    }
+    if (event.description === '') {
+      customToast('Descrição do evento é obrigatória!', 'error');
+      return;
+    }
+
+    return;
+  }
+
   const postEvent = (event: EventData) => {
+    handleValidateFields(event);
+
     api.post('/events', {
       data: {
         date: event.date,
@@ -57,6 +74,8 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ isOpen, isEdit, onRequest
   };
 
   const updateEvent = (event: EventData) => {
+    handleValidateFields(event);
+
     api.put(`/events/${event.id}`, {
       data: {
         date: event.date,
@@ -115,7 +134,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ isOpen, isEdit, onRequest
         {isEdit && <S.DeleteButton onClick={() => deleteEvent(eventData.id)}>Excluir</S.DeleteButton>}
       </S.ModalHeader>
       <S.FormGroup>
-        <S.InputLabel>Data do evento</S.InputLabel>
+        <S.InputLabel>Data</S.InputLabel>
         <S.Input
           type="date"
           value={eventData.date}
@@ -123,7 +142,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ isOpen, isEdit, onRequest
         />
       </S.FormGroup>
       <S.FormGroup>
-        <S.InputLabel>Nome do evento</S.InputLabel>
+        <S.InputLabel>Nome</S.InputLabel>
         <S.Input
           type="text"
           value={eventData.name}
@@ -131,7 +150,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({ isOpen, isEdit, onRequest
         />
       </S.FormGroup>
       <S.FormGroup>
-        <S.InputLabel>Descrição do evento</S.InputLabel>
+        <S.InputLabel>Descrição</S.InputLabel>
         <S.TextArea
           value={eventData.description}
           onChange={(e) => setEventData({ ...eventData, description: e.target.value })}

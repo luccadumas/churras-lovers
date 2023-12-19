@@ -35,8 +35,31 @@ const DetailsParticipantModal: React.FC<DetailsParticipantModalProps> = ({ isOpe
     amountReceived: 0,
   });
 
+  const validateFields = (participant: ParticipantData) => {
+    console.log(participant)
+    if (participant.name === '') {
+      customToast('Nome do participante é obrigatório!', 'error');
+      return;
+    }
+    if (participant.valueWithDrink === 0) {
+      customToast('Valor com bebida é obrigatório!', 'error');
+      return;
+    }
+    if (participant.valueWithoutDrink === 0) {
+      customToast('Valor sem bebida é obrigatório!', 'error');
+      return;
+    }
+    if (participant.amountReceived === 0) {
+      customToast('Valor pago é obrigatório!', 'error');
+      return;
+    }
+
+    return;
+  }
 
   const postParticipant = (participant: ParticipantData) => {
+    validateFields(participant);
+
     api.post('/participants', {
       data: {
         name: participant.name,
@@ -64,6 +87,8 @@ const DetailsParticipantModal: React.FC<DetailsParticipantModalProps> = ({ isOpe
   };
 
   const updateParticipant = (participant: ParticipantData) => {
+    validateFields(participant);
+
     api.put(`/participants/${participant.id}`, {
       data: {
         name: participant.name,
@@ -125,7 +150,7 @@ const DetailsParticipantModal: React.FC<DetailsParticipantModalProps> = ({ isOpe
         {isEdit && <S.DeleteButton onClick={() => deleteParticipant(participantData.id)}>Excluir</S.DeleteButton>}
       </S.ModalHeader>
       <S.FormGroup>
-        <S.InputLabel>Nome do participante:</S.InputLabel>
+        <S.InputLabel>Nome:</S.InputLabel>
         <S.Input
           type="text"
           value={participantData.name}
