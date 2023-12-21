@@ -97,10 +97,17 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    yarn install
    ```
-
 3. Create the .env file in the project root
    ```JS
    REACT_APP_API_URL = 'http://143.198.151.41/api/'
+   ```
+4. Start the project
+   ```JS
+   nom start
+    ```
+   ou
+   ```sh
+   yarn start
    ```
 
 <!-- CONTRIBUTING -->
